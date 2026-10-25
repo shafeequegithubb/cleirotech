@@ -256,17 +256,6 @@ em {
   transform-origin: left;
 }
 
-.progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--red-deep), var(--red));
-  transform-origin: left;
-  z-index: 150;
-}
-
 /* ───────────────────────────── Logo ───────────────────────────── */
 .logo {
   display: inline-flex;
@@ -1290,8 +1279,27 @@ em {
   .nav__toggle {
     display: block;
   }
+  .nav__inner {
+    height: 60px;
+  }
+  .nav .logo {
+    gap: 9px;
+  }
+  .nav .logo__mark {
+    width: 34px;
+    height: 34px;
+  }
+  .nav .logo__name {
+    font-size: 17px;
+    letter-spacing: 0.2em;
+  }
+  .nav .logo__sub {
+    margin-top: 4px;
+    font-size: 7.5px;
+    letter-spacing: 0.6em;
+  }
   .hero {
-    padding-top: 112px;
+    padding-top: 92px;
   }
   .hero__grid,
   .why,

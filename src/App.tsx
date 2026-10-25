@@ -1,6 +1,5 @@
 import { useLenis } from "./hooks/useLenis";
 import { Preloader } from "./components/Preloader";
-import { ScrollProgress } from "./components/ScrollProgress";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Marquee } from "./components/Marquee";
@@ -22,7 +21,6 @@ export default function App() {
   return (
     <>
       <Preloader />
-      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />

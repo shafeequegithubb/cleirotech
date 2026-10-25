@@ -42,7 +42,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.5, ease }}
           >
-            Web &amp; Mobile App Development · Kerala
+            Software development
           </motion.span>
 
           <h1 className="hero__title">
