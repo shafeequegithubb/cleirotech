@@ -8,14 +8,14 @@ export const BRAND = {
   slogan: "Think clear. Think Cleiro.",
 };
 
-// TODO: replace these placeholders with real contact details
 export const CONTACT = {
-  email: "hello@cleirodigital.com",
-  phone: "+91 00000 00000",
-  whatsapp: "910000000000", // country code + number, digits only
+  email: "cleirodigital@gmail.com",
+  phone: "+91 79942 08965",
+  whatsapp: "917994208965", // country code + number, digits only
   location: "Malappuram, Kerala, India",
-  instagram: "https://www.instagram.com/",
-  linkedin: "https://www.linkedin.com/",
+  instagram: "https://www.instagram.com/cleiro.in/",
+  linkedin: "", // add the LinkedIn page URL later; the footer hides it while empty
+  web3formsKey: "e3376bd8-75bf-42b1-9b9b-141cf9132812",
 };
 
 export const NAV_LINKS = [

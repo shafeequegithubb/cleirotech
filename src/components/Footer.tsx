@@ -63,9 +63,11 @@ export function Footer() {
               <a href={CONTACT.instagram} target="_blank" rel="noreferrer">
                 Instagram
               </a>
-              <a href={CONTACT.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
+              {CONTACT.linkedin && (
+                <a href={CONTACT.linkedin} target="_blank" rel="noreferrer">
+                  LinkedIn
+                </a>
+              )}
             </li>
           </ul>
         </div>

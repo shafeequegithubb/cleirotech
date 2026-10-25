@@ -5,9 +5,11 @@ import { CONTACT, SERVICES } from "../data/site";
 
 type Form = { name: string; email: string; phone: string; service: string; message: string };
 const empty: Form = { name: "", email: "", phone: "", service: "", message: "" };
+type Status = "idle" | "sending" | "success" | "error";
 
 export function Contact() {
   const [form, setForm] = useState<Form>(empty);
+  const [status, setStatus] = useState<Status>("idle");
 
   const update =
     (key: keyof Form) =>
@@ -26,12 +28,36 @@ export function Contact() {
       form.message,
     ].join("\n");
 
-  // Opens the visitor's email app with the message pre-filled.
-  // Swap this for a form service (Formspree, EmailJS, your own API) when ready.
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`New project enquiry from ${form.name}`);
-    window.location.href = `mailto:${CONTACT.email}?subject=${subject}&body=${encodeURIComponent(body())}`;
+    const data = new FormData(e.currentTarget);
+    if (data.get("botcheck")) return; // spam honeypot
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: CONTACT.web3formsKey,
+          subject: `New project enquiry from ${form.name}`,
+          from_name: "Cleiro Digital Website",
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          service: form.service || "Not sure yet",
+          message: form.message,
+        }),
+      });
+      const json = await res.json();
+      if (json.success) {
+        setStatus("success");
+        setForm(empty);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   const whatsappHref = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(
@@ -78,6 +104,7 @@ export function Contact() {
 
         <Reveal delay={0.1} className="contact__formwrap">
           <form className="form" onSubmit={onSubmit}>
+            <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" style={{ display: "none" }} />
             <div className="form__row">
               <label>
                 Your name
@@ -128,8 +155,8 @@ export function Contact() {
             </label>
 
             <div className="form__actions">
-              <button type="submit" className="btn btn--primary btn--lg">
-                Send Message <Send size={18} />
+              <button type="submit" className="btn btn--primary btn--lg" disabled={status === "sending"}>
+                {status === "sending" ? "Sending..." : "Send Message"} <Send size={18} />
               </button>
               <a
                 className="btn btn--ghost btn--lg"
@@ -140,6 +167,13 @@ export function Contact() {
                 <MessageCircle size={18} /> WhatsApp Us
               </a>
             </div>
+
+            {status === "success" && (
+              <p className="form__note form__note--ok">Thank you! Your message has been sent. We will reply within one business day.</p>
+            )}
+            {status === "error" && (
+              <p className="form__note form__note--err">Something went wrong. Please try again or WhatsApp us directly.</p>
+            )}
           </form>
         </Reveal>
       </div>
