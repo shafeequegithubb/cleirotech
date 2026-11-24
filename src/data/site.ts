@@ -1,3 +1,10 @@
+import k_yem_co from "../assets/images/projects/k-yem-co.webp";
+import broast_al_raki from "../assets/images/projects/broast-al-raki.webp";
+import al_mahdaly from "../assets/images/projects/al-mahdaly.webp";
+import faz_grooming from "../assets/images/projects/faz-grooming.webp";
+import elegance_beauty from "../assets/images/projects/elegance-beauty.webp";
+import zion_craft from "../assets/images/projects/zion-craft.webp";
+
 // ─────────────────────────────────────────────────────────────
 //  Edit everything about the site's content from this one file.
 // ─────────────────────────────────────────────────────────────
@@ -138,38 +145,51 @@ export const PROCESS = [
 // Edit / replace with the projects you want to show publicly
 export const WORK = [
   {
-    name: "K Yem Co",
-    type: "Brand Website",
-    text: "Product-led website for a Kerala coconut oil brand.",
-    tags: ["React", "Branding"],
-    tone: "a",
+    name: "Broast Al Raki",
+    type: "Restaurant Website",
+    text: "Dark, premium black-and-gold site for a fast-food brand.",
+    tags: ["React", "Restaurant"],
+    image: broast_al_raki,
+    tone: "d",
   },
   {
     name: "Al Mahdaly For Decor",
     type: "Luxury Showcase",
     text: "An elegant showcase site for a premium décor business.",
     tags: ["React", "Luxury UI"],
+    image: al_mahdaly,
     tone: "b",
-  },
-  {
-    name: "Elegance Beauty Makeover",
-    type: "Portfolio Website",
-    text: "Luxury portfolio for a makeover artist, built to attract bookings.",
-    tags: ["Portfolio", "Animation"],
-    tone: "c",
-  },
-  {
-    name: "Broast Al Raki",
-    type: "Restaurant Website",
-    text: "Dark, premium black-and-gold site for a fast-food brand.",
-    tags: ["React", "Restaurant"],
-    tone: "d",
   },
   {
     name: "Faz Grooming",
     type: "Local Business",
     text: "A sharp online presence for a men's salon in Malappuram.",
     tags: ["Web", "Local"],
+    image: faz_grooming,
+    tone: "a",
+  },
+  {
+    name: "Elegance Beauty Makeover",
+    type: "Portfolio Website",
+    text: "Luxury portfolio for a makeover artist, built to attract bookings.",
+    tags: ["Portfolio", "Animation"],
+    image: elegance_beauty,
+    tone: "c",
+  },
+  {
+    name: "Zion Craft",
+    type: "Product Catalogue",
+    text: "A premium showcase for handcrafted brass, bronze and décor collections.",
+    tags: ["React", "Catalogue"],
+    image: zion_craft,
+    tone: "b",
+  },
+  {
+    name: "K Yem Co",
+    type: "Brand Website",
+    text: "Product-led website for a Kerala coconut oil brand.",
+    tags: ["React", "Branding"],
+    image: k_yem_co,
     tone: "a",
   },
   {
@@ -177,6 +197,7 @@ export const WORK = [
     type: "Interactive Experience",
     text: "A cinematic digital wedding invite with door-open reveal and slideshow.",
     tags: ["Motion", "Creative"],
+    image: undefined,
     tone: "b",
   },
 ];

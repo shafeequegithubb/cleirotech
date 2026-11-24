@@ -19,11 +19,15 @@ export function Work() {
         <div className="work">
           {WORK.map((w, i) => (
             <Reveal key={w.name} delay={(i % 3) * 0.1}>
-              <article className={`project project--${w.tone}`}>
+              <article className={`project project--${w.tone}${w.image ? " project--image" : ""}`}>
                 <span className="project__type">{w.type}</span>
-                <span className="project__initial" aria-hidden="true">
-                  {w.name.charAt(0)}
-                </span>
+                {w.image ? (
+                  <div className="project__media">
+                    <img src={w.image} alt={`${w.name} website showcase`} loading="lazy" decoding="async" width={1200} height={675} />
+                  </div>
+                ) : (
+                  <span className="project__initial" aria-hidden="true">{w.name.charAt(0)}</span>
+                )}
                 <div className="project__body">
                   <h3>{w.name}</h3>
                   <p>{w.text}</p>
